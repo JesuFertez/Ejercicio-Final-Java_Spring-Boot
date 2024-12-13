@@ -17,7 +17,7 @@ public class PlanController {
         this.planService = planService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<PlanDTO>getAllPlans() {
         return planService.getAllPlans();
     }

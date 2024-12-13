@@ -24,7 +24,7 @@ public class PlanService {
         List<Plan> plans = plansRepository.findAll();
         List<PlanDTO> planDTOs = new ArrayList<>();
         for (Plan plan : plans) {
-            PlanDTO planDTO = new PlanDTO();
+             planDTOs.add(modelMapper.map(plan, PlanDTO.class));
         }
         return planDTOs;
     }
