@@ -20,6 +20,7 @@ public class Plan {
     String name;
     int price;
     String servicesProvided;
+    Boolean active;
     @OneToMany(mappedBy = "plan" , cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Contract> contracts = new ArrayList<>();
 }

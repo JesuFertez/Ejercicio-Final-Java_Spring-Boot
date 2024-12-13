@@ -4,6 +4,7 @@ import com.jesucompany.ejerciciospringboot.model.database.Customer;
 import com.jesucompany.ejerciciospringboot.model.dto.CustomerDTO;
 import com.jesucompany.ejerciciospringboot.model.repository.CustomerRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 public class CustomerService {
     private final CustomerRepository customerRepository;
 
+    @Autowired
     private ModelMapper modelMapper;
 
     public CustomerService(CustomerRepository customerRepository) {

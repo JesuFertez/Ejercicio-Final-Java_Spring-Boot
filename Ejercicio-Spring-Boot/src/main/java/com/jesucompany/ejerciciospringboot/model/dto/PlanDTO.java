@@ -13,5 +13,6 @@ public class PlanDTO {
     String name;
     int price;
     String servicesProvided;
+    Boolean active;
     private List<ContractDTO> contracts = new ArrayList<>();
 }

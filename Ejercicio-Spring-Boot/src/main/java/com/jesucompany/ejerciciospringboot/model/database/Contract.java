@@ -21,6 +21,8 @@ public class Contract {
     @ManyToOne
     @JoinColumn(name = "plan_id")
     Plan plan;
+    @Temporal(TemporalType.DATE)
     Date startDate;
+    @Temporal(TemporalType.DATE)
     Date endDate;
 }

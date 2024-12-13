@@ -4,6 +4,7 @@ import com.jesucompany.ejerciciospringboot.model.database.Plan;
 import com.jesucompany.ejerciciospringboot.model.dto.PlanDTO;
 import com.jesucompany.ejerciciospringboot.model.repository.PlansRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ import java.util.List;
 @Service
 public class PlanService {
     private final PlansRepository plansRepository;
+
+    @Autowired
     private ModelMapper modelMapper;
     public PlanService(PlansRepository plansRepository) {
         this.plansRepository = plansRepository;
@@ -41,6 +44,7 @@ public class PlanService {
         Plan plan = plansRepository.findById(id).orElse(null);
         plan.setName(planUpdate.getName());
         plan.setPrice(planUpdate.getPrice());
+        plan.setActive(planUpdate.getActive());
         plansRepository.save(plan);
         PlanDTO planDTO = modelMapper.map(plan, PlanDTO.class);
         return  planDTO;

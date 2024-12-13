@@ -8,6 +8,7 @@ import com.jesucompany.ejerciciospringboot.model.repository.ContractsRepository;
 import com.jesucompany.ejerciciospringboot.model.repository.CustomerRepository;
 import com.jesucompany.ejerciciospringboot.model.repository.PlansRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class ContractsService {
     private final CustomerRepository customerRepository;
     private final PlansRepository plansRepository;
 
+    @Autowired
     private ModelMapper modelMapper;
 
     public ContractsService(ContractsRepository contractsRepository, CustomerRepository customerRepository, PlansRepository plansRepository) {

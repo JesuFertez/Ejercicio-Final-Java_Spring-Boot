@@ -1,5 +1,6 @@
 package com.jesucompany.ejerciciospringboot.model.database;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class Customer {
     private String commune;
     private String street;
     private int number;
+    @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     private String phone;
     private Boolean isActive;

@@ -29,6 +29,7 @@ public class CustomerController {
     public CustomerDTO getCustomer(@PathVariable Long id) {
         return customerService.findById(id);
     }
+
     @PostMapping
     public CustomerDTO createCustomer(@RequestBody CustomerDTO customerDTO) {
         CustomerDTO customerDTO1= customerService.save(modelMapper.map(customerDTO, Customer.class));
