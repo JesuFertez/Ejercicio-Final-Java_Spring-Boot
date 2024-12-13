@@ -1,8 +1,8 @@
-package com.jesucompany.ejerciciospringboot.controllers;
+package com.jesucompany.ejerciciospringboot.view.controllers;
 
 import com.jesucompany.ejerciciospringboot.model.database.Customer;
 import com.jesucompany.ejerciciospringboot.model.dto.CustomerDTO;
-import com.jesucompany.ejerciciospringboot.service.CustomerService;
+import com.jesucompany.ejerciciospringboot.presenter.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 

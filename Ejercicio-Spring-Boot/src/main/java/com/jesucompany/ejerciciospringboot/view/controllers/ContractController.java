@@ -1,8 +1,8 @@
-package com.jesucompany.ejerciciospringboot.controllers;
+package com.jesucompany.ejerciciospringboot.view.controllers;
 
 import com.jesucompany.ejerciciospringboot.model.database.Contract;
 import com.jesucompany.ejerciciospringboot.model.dto.ContractDTO;
-import com.jesucompany.ejerciciospringboot.service.ContractsService;
+import com.jesucompany.ejerciciospringboot.presenter.service.ContractsService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

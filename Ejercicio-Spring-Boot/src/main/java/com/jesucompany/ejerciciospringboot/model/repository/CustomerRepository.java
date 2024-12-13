@@ -1,4 +1,4 @@
-package com.jesucompany.ejerciciospringboot.repository;
+package com.jesucompany.ejerciciospringboot.model.repository;
 
 import com.jesucompany.ejerciciospringboot.model.database.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.jesucompany.ejerciciospringboot.util;
+package com.jesucompany.ejerciciospringboot.presenter.service.util;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

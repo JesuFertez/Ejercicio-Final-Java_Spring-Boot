@@ -1,8 +1,8 @@
-package com.jesucompany.ejerciciospringboot.controllers;
+package com.jesucompany.ejerciciospringboot.view.controllers;
 
 import com.jesucompany.ejerciciospringboot.model.database.Plan;
 import com.jesucompany.ejerciciospringboot.model.dto.PlanDTO;
-import com.jesucompany.ejerciciospringboot.service.PlanService;
+import com.jesucompany.ejerciciospringboot.presenter.service.PlanService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

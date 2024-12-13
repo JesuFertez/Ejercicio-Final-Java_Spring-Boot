@@ -1,8 +1,8 @@
-package com.jesucompany.ejerciciospringboot.service;
+package com.jesucompany.ejerciciospringboot.presenter.service;
 
 import com.jesucompany.ejerciciospringboot.model.database.Customer;
 import com.jesucompany.ejerciciospringboot.model.dto.CustomerDTO;
-import com.jesucompany.ejerciciospringboot.repository.CustomerRepository;
+import com.jesucompany.ejerciciospringboot.model.repository.CustomerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +45,7 @@ public class CustomerService {
     public CustomerDTO update(Customer customer) {
         Customer customerToUpdate = customerRepository.findById(customer.getId()).orElse(null);
         customerToUpdate.setName(customer.getName());
+        customerToUpdate.setLastName(customer.getLastName());
         customerToUpdate.setRun(customer.getRun());
         customerToUpdate.setCity(customer.getCity());
         customerToUpdate.setCommune(customer.getCommune());

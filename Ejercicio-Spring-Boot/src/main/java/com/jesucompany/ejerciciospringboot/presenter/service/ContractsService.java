@@ -1,12 +1,12 @@
-package com.jesucompany.ejerciciospringboot.service;
+package com.jesucompany.ejerciciospringboot.presenter.service;
 
 import com.jesucompany.ejerciciospringboot.model.database.Contract;
 import com.jesucompany.ejerciciospringboot.model.database.Customer;
 import com.jesucompany.ejerciciospringboot.model.database.Plan;
 import com.jesucompany.ejerciciospringboot.model.dto.ContractDTO;
-import com.jesucompany.ejerciciospringboot.repository.ContractsRepository;
-import com.jesucompany.ejerciciospringboot.repository.CustomerRepository;
-import com.jesucompany.ejerciciospringboot.repository.PlansRepository;
+import com.jesucompany.ejerciciospringboot.model.repository.ContractsRepository;
+import com.jesucompany.ejerciciospringboot.model.repository.CustomerRepository;
+import com.jesucompany.ejerciciospringboot.model.repository.PlansRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
