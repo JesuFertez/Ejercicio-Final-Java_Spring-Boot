@@ -1,9 +1,13 @@
 package com.jesucompany.ejerciciospringboot.model.database;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.convert.PeriodFormat;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,7 +30,9 @@ public class Customer {
     private String commune;
     private String street;
     private int number;
+    @Past
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dateOfBirth;
     private String phone;
     private Boolean isActive;

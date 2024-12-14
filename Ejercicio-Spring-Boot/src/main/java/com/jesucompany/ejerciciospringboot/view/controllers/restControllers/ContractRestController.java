@@ -1,4 +1,4 @@
-package com.jesucompany.ejerciciospringboot.view.controllers;
+package com.jesucompany.ejerciciospringboot.view.controllers.restControllers;
 
 import com.jesucompany.ejerciciospringboot.model.database.Contract;
 import com.jesucompany.ejerciciospringboot.model.dto.ContractDTO;
@@ -9,11 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/contracts")
-public class ContractController {
+public class ContractRestController {
 
     private final ContractsService contractsService;
 
-    public ContractController(ContractsService contractsService) {
+    public ContractRestController(ContractsService contractsService) {
         this.contractsService = contractsService;
     }
 
@@ -31,7 +31,6 @@ public class ContractController {
     public ContractDTO createContract( @RequestBody Contract contract,
                                        @RequestParam Long customerId,
                                       @RequestParam Long planId){
-
         return  contractsService.createContract(contract,customerId,planId );
     }
 

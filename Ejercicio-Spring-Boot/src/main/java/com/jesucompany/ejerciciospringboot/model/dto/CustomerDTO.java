@@ -1,6 +1,7 @@
 package com.jesucompany.ejerciciospringboot.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,8 @@ public class CustomerDTO {
     private String commune;
     private String street;
     private int number;
-    @JsonFormat(pattern = "dd-MM-yyyy")
+    @Past
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateOfBirth;
     private String phone;
     private Boolean isActive;

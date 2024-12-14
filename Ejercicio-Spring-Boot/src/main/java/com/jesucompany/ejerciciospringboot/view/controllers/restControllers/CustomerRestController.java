@@ -1,4 +1,4 @@
-package com.jesucompany.ejerciciospringboot.view.controllers;
+package com.jesucompany.ejerciciospringboot.view.controllers.restControllers;
 
 import com.jesucompany.ejerciciospringboot.model.database.Customer;
 import com.jesucompany.ejerciciospringboot.model.dto.CustomerDTO;
@@ -10,12 +10,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/customers")
-public class CustomerController {
+public class CustomerRestController {
 
     private final CustomerService customerService;
     private final ModelMapper modelMapper;
 
-    public CustomerController(CustomerService customerService, ModelMapper modelMapper) {
+    public CustomerRestController(CustomerService customerService, ModelMapper modelMapper) {
         this.customerService = customerService;
         this.modelMapper = modelMapper;
     }

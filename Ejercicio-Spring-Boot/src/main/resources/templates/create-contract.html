@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Crear Contrato</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<h1>Crear Nuevo Contrato</h1>
+
+<!-- Mostrar errores -->
+<div th:if="${error}" class="error-message" th:text="${error}"></div>
+
+<form th:action="@{/web-contracts/save}" method="post" th:object="${contract}">
+  <!-- Descripción
+  <label for="description">Descripción:</label>
+  <input type="text" id="description" name="description" th:field="*{description}" required />
+  <br/>-->
+
+  <!-- Fechas-->
+  <label for="startDate">Fecha de Inicio:</label>
+  <input type="date" id="startDate" name="startDate" th:field="*{startDate}" />
+  <br/>
+  <label for="endDate">Fecha de Fin:</label>
+  <input type="date" id="endDate" name="endDate" th:field="*{endDate}" />
+  <br/>
+
+  <!-- Plan ID -->
+  <label for="planId">Plan ID:</label>
+  <input type="number" id="planId" name="planId" required />
+  <br/>
+
+  <!-- Customer ID -->
+  <label for="customerId">Customer ID:</label>
+  <input type="number" id="customerId" name="customerId" required />
+  <br/>
+
+  <!-- Botón de envío -->
+  <button type="submit">Guardar Contrato</button>
+</form>
+
+<a href="/web-contracts">Volver al listado</a>
+</body>
+</html>

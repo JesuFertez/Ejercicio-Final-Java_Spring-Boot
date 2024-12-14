@@ -1,4 +1,4 @@
-package com.jesucompany.ejerciciospringboot.view.controllers;
+package com.jesucompany.ejerciciospringboot.view.controllers.restControllers;
 
 import com.jesucompany.ejerciciospringboot.model.database.Plan;
 import com.jesucompany.ejerciciospringboot.model.dto.PlanDTO;
@@ -9,11 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/plans")
-public class PlanController {
+public class PlanRestController {
 
     private final PlanService planService;
 
-    public PlanController(PlanService planService) {
+    public PlanRestController(PlanService planService) {
         this.planService = planService;
     }
 
