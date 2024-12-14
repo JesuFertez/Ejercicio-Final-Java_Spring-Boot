@@ -28,7 +28,7 @@ public class ContractWebController {
     }
 
     @GetMapping("/create-contract")
-    public String mostrarFormularioDeCreacion(Model model) {
+    public String showFormCreate(Model model) {
         model.addAttribute("contract", new Contract()); // Formulario vacío
         return "create-contract"; // Carga la plantilla crear-contrato.html
     }

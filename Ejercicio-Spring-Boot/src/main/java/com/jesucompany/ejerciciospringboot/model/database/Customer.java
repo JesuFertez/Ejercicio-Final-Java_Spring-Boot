@@ -38,4 +38,19 @@ public class Customer {
     private Boolean isActive;
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Contract>contracts = new ArrayList<>();
+
+    public Customer(String name, String lastName, String run, String city, String commune,
+                    String street, int number, LocalDate dateOfBirth, String phone, Boolean isActive) {
+        this.name = name;
+        this.lastName = lastName;
+        this.run = run;
+        this.city = city;
+        this.commune = commune;
+        this.street = street;
+        this.number = number;
+        this.dateOfBirth = dateOfBirth;
+        this.phone = phone;
+        this.isActive = isActive;
+        this.contracts = contracts;
+    }
 }

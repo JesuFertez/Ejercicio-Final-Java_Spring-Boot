@@ -11,10 +11,6 @@
 <div th:if="${error}" class="error-message" th:text="${error}"></div>
 
 <form th:action="@{/web-contracts/save}" method="post" th:object="${contract}">
-  <!-- Descripción
-  <label for="description">Descripción:</label>
-  <input type="text" id="description" name="description" th:field="*{description}" required />
-  <br/>-->
 
   <!-- Fechas-->
   <label for="startDate">Fecha de Inicio:</label>

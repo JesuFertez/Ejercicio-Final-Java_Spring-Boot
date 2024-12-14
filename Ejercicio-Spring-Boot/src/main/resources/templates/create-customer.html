@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crear Cliente</title>
+    <link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+<h1>Crear Nuevo Cliente</h1>
+
+<!-- Mostrar errores -->
+<div th:if="${error}" class="error-message" th:text="${error}"></div>
+
+<form th:action="@{/web-customers/save}" method="post" th:object="${customer}">
+
+    <!-- Customer atributos -->
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" th:field="*{name}"/>
+    <br/>
+    <label for="lastName">Apellido:</label>
+    <input type="text" id="lastName" name="lastName" th:field="*{lastName}"/>
+    <br/>
+    <label for="run">Run:</label>
+    <input type="text" id="run" name="run" required/>
+    <br/>
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required/>
+    <br/>
+    <label for="commune">Commune:</label>
+    <input type="text" id="commune" name="commune" required/>
+    <br/>
+    <label for="street">Street:</label>
+    <input type="text" id="street" name="street" required/>
+    <br/>
+    <label for="number">Number:</label>
+    <input type="number" id="number" name="number" required/>
+    <br/>
+    <label for="dateOfBirth">Date of birth:</label>
+    <input type="date" id="dateOfBirth" name="dateOfBirth" required/>
+    <br/>
+    <label for="phone">phone:</label>
+    <input type="number" id="phone" name="phone" required/>
+    <br/>
+<!--    <label for="isActive">Acivo:</label>-->
+<!--    <input type="" id="isActive" name="isActive" required/>-->
+<!--    <br/>-->
+
+    <!-- Botón de envío -->
+    <button type="submit">Guardar Cliente</button>
+</form>
+
+<a href="/web-customers">Volver al listado</a>
+</body>
+</html>
