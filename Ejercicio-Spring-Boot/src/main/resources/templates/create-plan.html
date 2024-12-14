@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crear Plan</title>
+    <link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+<h1>Crear Nuevo Plan</h1>
+
+<!-- Mostrar errores -->
+<div th:if="${error}" class="error-message" th:text="${error}"></div>
+
+<form th:action="@{/web-plans/save}" method="post" th:object="${plan}">
+
+    <label for="name">Name plan:</label>
+    <input type="text" id="name" name="name" required/>
+    <br/>
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" required/>
+    <br/>
+    <label for="servicesProvided">Service Provided:</label>
+    <input type="text" id="servicesProvided" name="servicesProvided" required/>
+    <br/>
+    <label for="active">Active:</label>
+    <input type="checkbox" id="active" name="active"/>
+    <br/>
+
+    <!-- Botón de envío -->
+    <button type="submit">Guardar Plan</button>
+</form>
+
+<a href="/web-plans">Volver al listado</a>
+</body>
+</html>

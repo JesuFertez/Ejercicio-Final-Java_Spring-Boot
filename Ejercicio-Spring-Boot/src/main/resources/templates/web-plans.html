@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Contratos</title>
+</head>
+<body>
+<h1>Lista de Planes</h1>
+<a href="/web-plans/create-plan">Crear Nuevo Plan</a>
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Service Provided</th>
+    <th>Active</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="plan : ${plans}">
+    <td th:text="${plan.id}"></td>
+    <td th:text="${plan.name}"></td>
+    <td th:text="${plan.price}"></td>
+    <td th:text="${plan.servicesProvided}"></td>
+    <td th:text="${plan.active}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

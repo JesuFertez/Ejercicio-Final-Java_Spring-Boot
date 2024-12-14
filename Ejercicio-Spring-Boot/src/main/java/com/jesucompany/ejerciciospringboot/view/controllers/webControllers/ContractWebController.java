@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -15,6 +16,7 @@ import java.util.List;
 public class ContractWebController {
 
     private final ContractsService contractsService;
+
 
     public ContractWebController(ContractsService contractsService) {
         this.contractsService = contractsService;
@@ -34,10 +36,12 @@ public class ContractWebController {
     }
     @PostMapping("/save")
     public String createContract(
-            @ModelAttribute Contract contract,
-            @RequestParam Long planId,
             @RequestParam Long customerId,
+            @RequestParam Long planId,
+            @RequestParam LocalDate startDate,
+            @RequestParam LocalDate endDate,
             RedirectAttributes redirectAttributes) {
+        Contract contract = new Contract(startDate,endDate);
         try {
             contractsService.createContract(contract, planId, customerId);
             redirectAttributes.addFlashAttribute("message", "Contrato creado exitosamente.");

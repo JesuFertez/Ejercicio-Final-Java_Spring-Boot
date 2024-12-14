@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerDTO {
+    private String id;
     private String name;
     private String lastName;
     private String run;

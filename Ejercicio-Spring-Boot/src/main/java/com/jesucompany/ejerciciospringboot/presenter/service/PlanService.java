@@ -36,7 +36,8 @@ public class PlanService {
     }
 
     public PlanDTO createPlan(Plan plan) {
-        PlanDTO planDTO = modelMapper.map(plansRepository.save(plan), PlanDTO.class);
+        Plan plan1 = plansRepository.save(plan);
+        PlanDTO planDTO = modelMapper.map(plan1, PlanDTO.class);
         return planDTO;
     }
 
@@ -44,7 +45,8 @@ public class PlanService {
         Plan plan = plansRepository.findById(id).orElse(null);
         plan.setName(planUpdate.getName());
         plan.setPrice(planUpdate.getPrice());
-        plan.setActive(planUpdate.getActive());
+        plan.setServicesProvided(planUpdate.getServicesProvided());
+        plan.setActive(planUpdate.isActive());
         plansRepository.save(plan);
         PlanDTO planDTO = modelMapper.map(plan, PlanDTO.class);
         return  planDTO;

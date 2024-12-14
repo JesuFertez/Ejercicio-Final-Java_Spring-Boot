@@ -39,6 +39,7 @@ public class ContractsService {
     }
 
     public ContractDTO createContract(Contract contract, Long customerId, Long planId) {
+
         Customer customer = customerRepository.findById(customerId).orElse(null);
         if(!customer.getIsActive()){
             throw new IllegalStateException("El cliente está inactivo, no puede contratar planes");

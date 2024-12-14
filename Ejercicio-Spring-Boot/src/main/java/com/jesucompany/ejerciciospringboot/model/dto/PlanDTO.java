@@ -10,9 +10,10 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class PlanDTO {
-    String name;
-    int price;
-    String servicesProvided;
-    Boolean active;
+    private String id;
+    private String name;
+    private int price;
+    private String servicesProvided;
+    private boolean active;
     private List<ContractDTO> contracts = new ArrayList<>();
 }
