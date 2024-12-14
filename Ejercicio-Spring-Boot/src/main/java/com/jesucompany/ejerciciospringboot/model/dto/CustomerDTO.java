@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -20,7 +21,7 @@ public class CustomerDTO {
     private String street;
     private int number;
     @JsonFormat(pattern = "dd-MM-yyyy")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String phone;
     private Boolean isActive;
     private List<ContractDTO>contracts = new ArrayList<>();

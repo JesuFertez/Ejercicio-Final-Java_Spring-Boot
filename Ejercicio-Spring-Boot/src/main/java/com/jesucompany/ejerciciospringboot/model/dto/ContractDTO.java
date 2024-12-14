@@ -4,16 +4,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Date;
+
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ContractDTO {
-    CustomerDTO customer;
-    PlanDTO plan;
+    Long customerId;
+    Long planId;
     @JsonFormat(pattern = "dd-MM-yyyy")
-    Date startDate;
+    LocalDate startDate;
     @JsonFormat(pattern = "dd-MM-yyyy")
-    Date endDate;
+    LocalDate endDate;
 }

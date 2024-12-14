@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Date;
+
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -22,7 +23,7 @@ public class Contract {
     @JoinColumn(name = "plan_id")
     Plan plan;
     @Temporal(TemporalType.DATE)
-    Date startDate;
+    LocalDate startDate;
     @Temporal(TemporalType.DATE)
-    Date endDate;
+    LocalDate endDate;
 }

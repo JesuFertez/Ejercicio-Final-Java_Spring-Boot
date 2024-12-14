@@ -31,7 +31,13 @@ public class ContractController {
     public ContractDTO createContract( @RequestBody Contract contract,
                                        @RequestParam Long customerId,
                                       @RequestParam Long planId){
-        return contractsService.createContract(contract,customerId,planId );
+
+        return  contractsService.createContract(contract,customerId,planId );
+    }
+
+    @PutMapping("/{id}")
+    public ContractDTO updateContract(@PathVariable("id")Long id, @RequestBody Contract contract){
+        return contractsService.updateContract(id,contract);
     }
 
     @DeleteMapping("/{id}")

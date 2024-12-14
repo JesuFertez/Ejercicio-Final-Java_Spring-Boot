@@ -43,10 +43,22 @@ public class ContractsService {
         Plan plan = plansRepository.findById(planId).orElse(null);
         contract.setCustomer(customer);
         contract.setPlan(plan);
+        contract.setStartDate(contract.getStartDate());
+        contract.setEndDate(contract.getEndDate());
         contractsRepository.save(contract);
         ContractDTO contractDTO = modelMapper.map(contract, ContractDTO.class);
         return contractDTO;
     }
+
+    public ContractDTO updateContract(Long id,Contract contract){
+        Contract contract1 = contractsRepository.findById(id).orElse(null);
+        contract1.setCustomer(contract.getCustomer());
+        contract1.setPlan(contract.getPlan());
+        contract1.setEndDate(contract.getEndDate());
+        contract1.setStartDate(contract.getStartDate());
+        ContractDTO contractDTO = modelMapper.map(contract,ContractDTO.class);
+        return contractDTO;
+        }
 
     public ContractDTO getContractById(Long id) {
         return modelMapper.map(contractsRepository.findById(id).orElseThrow(
