@@ -2,6 +2,7 @@ package com.jesucompany.ejerciciospringboot.view.controllers.webControllers;
 
 import com.jesucompany.ejerciciospringboot.model.database.Contract;
 import com.jesucompany.ejerciciospringboot.model.dto.ContractDTO;
+import com.jesucompany.ejerciciospringboot.presenter.ContractPresenter;
 import com.jesucompany.ejerciciospringboot.presenter.service.ContractsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,16 +16,16 @@ import java.util.List;
 @RequestMapping("/web-contracts")
 public class ContractWebController {
 
-    private final ContractsService contractsService;
+    private final ContractPresenter contractPresenter;
 
 
-    public ContractWebController(ContractsService contractsService) {
-        this.contractsService = contractsService;
+    public ContractWebController(ContractPresenter contractPresenter) {
+        this.contractPresenter = contractPresenter;
     }
 
     @GetMapping
     public String getAllContracts(Model model) {
-        List<ContractDTO> contracts = contractsService.getAllContracts();
+        List<ContractDTO> contracts = contractPresenter.getAllContracts();
         model.addAttribute("contracts", contracts); // Pasar los datos al modelo
         return "web-contracts";
     }
@@ -43,7 +44,7 @@ public class ContractWebController {
             RedirectAttributes redirectAttributes) {
         Contract contract = new Contract(startDate,endDate);
         try {
-            contractsService.createContract(contract, planId, customerId);
+            contractPresenter.createContract(contract, planId, customerId);
             redirectAttributes.addFlashAttribute("message", "Contrato creado exitosamente.");
         } catch (IllegalStateException | IllegalArgumentException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());

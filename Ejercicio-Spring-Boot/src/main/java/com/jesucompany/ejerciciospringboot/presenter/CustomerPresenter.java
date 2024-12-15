@@ -21,8 +21,7 @@ public class CustomerPresenter {
 
     public List<CustomerDTO>findAll(){
         try{
-            List<CustomerDTO> customers = customerService.findAll();
-            return customers;
+            return customerService.findAll();
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener los clientes", e);
         }
@@ -35,10 +34,8 @@ public class CustomerPresenter {
         return customerService.save(customer);
     }
 
-
     public CustomerDTO getCustomerById(Long id) {
-        CustomerDTO customerDTO = customerService.findById(id);
-        return customerDTO;
+        return customerService.findById(id);
     }
 
     public void deleteCustomer(Long id) {
@@ -46,7 +43,6 @@ public class CustomerPresenter {
     }
 
     public CustomerDTO updateCustomer(Long id, Customer customer) {
-        CustomerDTO customerUpdate = updateCustomer(id,customer);
-        return customerUpdate;
+        return updateCustomer(id,customer);
     }
 }
