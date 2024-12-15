@@ -2,7 +2,7 @@ package com.jesucompany.ejerciciospringboot.view.controllers.webControllers;
 
 import com.jesucompany.ejerciciospringboot.model.database.Customer;
 import com.jesucompany.ejerciciospringboot.model.dto.CustomerDTO;
-import com.jesucompany.ejerciciospringboot.presenter.service.CustomerService;
+import com.jesucompany.ejerciciospringboot.presenter.CustomerPresenter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +14,15 @@ import java.util.List;
 @Controller
 @RequestMapping("/web-customers")
 public class CustomerWebController {
-    private final CustomerService customerService;
+    private final CustomerPresenter customerPresenter;
 
-    public CustomerWebController(CustomerService customerService){
-        this.customerService = customerService;
+    public CustomerWebController(CustomerPresenter customerPresenter){
+        this.customerPresenter = customerPresenter;
     }
 
     @GetMapping
     public String getAllCustomers(Model model){
-        List<CustomerDTO> customers = customerService.findAll();
+        List<CustomerDTO> customers = customerPresenter.findAll();
         model.addAttribute("customers", customers);
         return "web-customers";
     }
@@ -46,14 +46,9 @@ public class CustomerWebController {
             @RequestParam String phone,
             @RequestParam Boolean isActive,
             RedirectAttributes redirectAttributes){
-        Customer customer = new Customer(name,lastName, run, city,commune,street,number,
-                dateOfBirth,phone,isActive);
-        try {
-            customerService.save(customer);
+            customerPresenter.createCustomer(name,lastName, run, city,commune,street,number,
+                    dateOfBirth,phone,isActive);
             redirectAttributes.addFlashAttribute("message","Cliente creado exitosamente");
-        } catch (IllegalStateException | IllegalArgumentException e) {
-            redirectAttributes.addFlashAttribute("error", e.getMessage());
-        }
         return "redirect:/web-customers";
     }
 }

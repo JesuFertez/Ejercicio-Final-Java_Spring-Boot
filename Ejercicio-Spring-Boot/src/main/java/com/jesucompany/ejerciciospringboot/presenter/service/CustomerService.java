@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomerService {
+public class CustomerService implements CustomerServiceInterface{
     private final CustomerRepository customerRepository;
 
     @Autowired
@@ -21,6 +21,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    @Override
     public List<CustomerDTO> findAll() {
         List<Customer> customers = customerRepository.findAll();
         List<CustomerDTO> customerDTOS = new ArrayList<>();
@@ -30,6 +31,7 @@ public class CustomerService {
         return customerDTOS;
     }
 
+    @Override
     public CustomerDTO findById(Long id) {
         Customer customer = customerRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Customer not found"));
@@ -38,12 +40,14 @@ public class CustomerService {
         return customerDTO;
     }
 
+    @Override
     public CustomerDTO save(Customer customer) {
         Customer savedCustomer = customerRepository.save(customer);
         CustomerDTO customerDTO = modelMapper.map(savedCustomer, CustomerDTO.class);
         return customerDTO;
     }
 
+    @Override
     public CustomerDTO update(Customer customer) {
         Customer customerToUpdate = customerRepository.findById(customer.getId()).orElse(null);
         customerToUpdate.setName(customer.getName());
@@ -62,6 +66,7 @@ public class CustomerService {
         return customerDTO;
     }
 
+    @Override
     public void delete(Long id) {
         customerRepository.deleteById(id);
     }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ContractsService {
+public class ContractsService implements ContractServiceInterface{
     private final ContractsRepository contractsRepository;
     private final CustomerRepository customerRepository;
     private final PlansRepository plansRepository;
@@ -23,12 +23,14 @@ public class ContractsService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public ContractsService(ContractsRepository contractsRepository, CustomerRepository customerRepository, PlansRepository plansRepository) {
+    public ContractsService(ContractsRepository contractsRepository, CustomerRepository customerRepository,
+                            PlansRepository plansRepository) {
         this.contractsRepository = contractsRepository;
         this.customerRepository = customerRepository;
         this.plansRepository = plansRepository;
     }
 
+    @Override
     public List<ContractDTO> getAllContracts() {
         List<Contract> contracts = contractsRepository.findAll();
         List<ContractDTO> contractDTOs = new ArrayList<>();
@@ -38,8 +40,8 @@ public class ContractsService {
         return contractDTOs;
     }
 
+    @Override
     public ContractDTO createContract(Contract contract, Long customerId, Long planId) {
-
         Customer customer = customerRepository.findById(customerId).orElse(null);
         if(!customer.getIsActive()){
             throw new IllegalStateException("El cliente está inactivo, no puede contratar planes");
@@ -57,6 +59,7 @@ public class ContractsService {
         return contractDTO;
     }
 
+    @Override
     public ContractDTO updateContract(Long id,Contract contract){
         Contract contract1 = contractsRepository.findById(id).orElse(null);
         contract1.setCustomer(contract.getCustomer());
@@ -67,11 +70,12 @@ public class ContractsService {
         return contractDTO;
         }
 
+    @Override
     public ContractDTO getContractById(Long id) {
         return modelMapper.map(contractsRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Contract not found")), ContractDTO.class);
     }
-
+    @Override
     public void deleteContractById(Long id) {
         contractsRepository.deleteById(id);
     }
@@ -84,6 +88,7 @@ public class ContractsService {
         return contractDTOs;
     }
 
+    @Override
     public List<ContractDTO> getContractsByPlanId(Long planId) {
         List<ContractDTO> contractDTOs = new ArrayList<>();
         contractsRepository.findByPlanId(planId).forEach(contract -> {
