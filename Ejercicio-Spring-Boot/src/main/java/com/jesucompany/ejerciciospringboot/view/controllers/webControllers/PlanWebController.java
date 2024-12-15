@@ -2,6 +2,7 @@ package com.jesucompany.ejerciciospringboot.view.controllers.webControllers;
 
 import com.jesucompany.ejerciciospringboot.model.database.Plan;
 import com.jesucompany.ejerciciospringboot.model.dto.PlanDTO;
+import com.jesucompany.ejerciciospringboot.presenter.PlanPresenter;
 import com.jesucompany.ejerciciospringboot.presenter.service.PlanService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,15 +14,15 @@ import java.util.List;
 @Controller
 @RequestMapping("/web-plans")
 public class PlanWebController {
-    private final PlanService planService;
+    private final PlanPresenter planPresenter;
 
-    public PlanWebController(PlanService planService){
-        this.planService = planService;
+    public PlanWebController(PlanPresenter planPresenter){
+        this.planPresenter = planPresenter;
     }
 
     @GetMapping
     public String getAllPlans(Model model){
-        List<PlanDTO> plans = planService.getAllPlans();
+        List<PlanDTO> plans = planPresenter.getPlansForView();
         model.addAttribute("plans",plans);
         return "web-plans";
     }
@@ -39,9 +40,8 @@ public class PlanWebController {
             @RequestParam String servicesProvided,
             @RequestParam boolean active,
             RedirectAttributes redirectAttributes){
-            Plan plan = new Plan(name, price, servicesProvided, active);
         try{
-            planService.createPlan(plan);
+            planPresenter.createPlan(name,price,servicesProvided,active);
             redirectAttributes.addFlashAttribute("message","Plan creado exitosamente");
         }catch (IllegalStateException| IllegalArgumentException e){
             redirectAttributes.addFlashAttribute("error",e.getMessage());

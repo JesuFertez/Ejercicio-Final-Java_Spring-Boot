@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PlanService {
+public class PlanService implements PlanServiceInterface{
     private final PlansRepository plansRepository;
 
     @Autowired
@@ -20,6 +20,7 @@ public class PlanService {
         this.plansRepository = plansRepository;
     }
 
+    @Override
     public List<PlanDTO> getAllPlans() {
         List<Plan> plans = plansRepository.findAll();
         List<PlanDTO> planDTOs = new ArrayList<>();
@@ -29,18 +30,21 @@ public class PlanService {
         return planDTOs;
     }
 
+    @Override
     public PlanDTO getPlanById(Long id) {
        Plan plan = plansRepository.findById(id).orElse(null);
        PlanDTO planDTO = modelMapper.map(plan, PlanDTO.class);
         return planDTO;
     }
 
+    @Override
     public PlanDTO createPlan(Plan plan) {
         Plan plan1 = plansRepository.save(plan);
         PlanDTO planDTO = modelMapper.map(plan1, PlanDTO.class);
         return planDTO;
     }
 
+    @Override
     public PlanDTO updatePlan(Long id, Plan planUpdate) {
         Plan plan = plansRepository.findById(id).orElse(null);
         plan.setName(planUpdate.getName());
@@ -52,7 +56,8 @@ public class PlanService {
         return  planDTO;
     }
 
-    public void deletePlan(Long id) {
+   @Override
+   public void deletePlan(Long id) {
         plansRepository.deleteById(id);
     }
 }

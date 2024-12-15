@@ -1,4 +1,4 @@
-package com.jesucompany.ejerciciospringboot.presenter.service.util;
+package com.jesucompany.ejerciciospringboot.presenter.util;
 
 public class Promotions {
 
