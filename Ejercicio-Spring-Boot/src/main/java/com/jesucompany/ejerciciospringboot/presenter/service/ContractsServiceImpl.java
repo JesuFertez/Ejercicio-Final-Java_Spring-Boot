@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ContractsService implements ContractServiceInterface{
+public class ContractsServiceImpl implements ContractServiceInterface{
     private final ContractsRepository contractsRepository;
     private final CustomerRepository customerRepository;
     private final PlansRepository plansRepository;
@@ -23,8 +23,8 @@ public class ContractsService implements ContractServiceInterface{
     @Autowired
     private ModelMapper modelMapper;
 
-    public ContractsService(ContractsRepository contractsRepository, CustomerRepository customerRepository,
-                            PlansRepository plansRepository) {
+    public ContractsServiceImpl(ContractsRepository contractsRepository, CustomerRepository customerRepository,
+                                PlansRepository plansRepository) {
         this.contractsRepository = contractsRepository;
         this.customerRepository = customerRepository;
         this.plansRepository = plansRepository;

@@ -1,10 +1,8 @@
 package com.jesucompany.ejerciciospringboot.presenter;
 
 import com.jesucompany.ejerciciospringboot.model.database.Customer;
-import com.jesucompany.ejerciciospringboot.model.database.Plan;
 import com.jesucompany.ejerciciospringboot.model.dto.CustomerDTO;
-import com.jesucompany.ejerciciospringboot.model.dto.PlanDTO;
-import com.jesucompany.ejerciciospringboot.presenter.service.CustomerService;
+import com.jesucompany.ejerciciospringboot.presenter.service.CustomerServiceImpl;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -13,9 +11,9 @@ import java.util.List;
 @Component
 public class CustomerPresenter {
 
-    public CustomerService customerService;
+    public CustomerServiceImpl customerService;
 
-    CustomerPresenter(CustomerService customerService){
+    CustomerPresenter(CustomerServiceImpl customerService){
         this.customerService = customerService;
     }
 

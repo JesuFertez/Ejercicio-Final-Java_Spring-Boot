@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PlanService implements PlanServiceInterface{
+public class PlanServiceImpl implements PlanServiceInterface{
     private final PlansRepository plansRepository;
 
     @Autowired
     private ModelMapper modelMapper;
-    public PlanService(PlansRepository plansRepository) {
+    public PlanServiceImpl(PlansRepository plansRepository) {
         this.plansRepository = plansRepository;
     }
 

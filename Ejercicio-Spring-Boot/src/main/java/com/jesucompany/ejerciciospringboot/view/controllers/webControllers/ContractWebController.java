@@ -3,7 +3,6 @@ package com.jesucompany.ejerciciospringboot.view.controllers.webControllers;
 import com.jesucompany.ejerciciospringboot.model.database.Contract;
 import com.jesucompany.ejerciciospringboot.model.dto.ContractDTO;
 import com.jesucompany.ejerciciospringboot.presenter.ContractPresenter;
-import com.jesucompany.ejerciciospringboot.presenter.service.ContractsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

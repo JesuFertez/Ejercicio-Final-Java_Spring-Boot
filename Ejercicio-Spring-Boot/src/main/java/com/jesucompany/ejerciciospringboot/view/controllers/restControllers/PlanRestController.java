@@ -3,7 +3,9 @@ package com.jesucompany.ejerciciospringboot.view.controllers.restControllers;
 import com.jesucompany.ejerciciospringboot.model.database.Plan;
 import com.jesucompany.ejerciciospringboot.model.dto.PlanDTO;
 import com.jesucompany.ejerciciospringboot.presenter.PlanPresenter;
-import com.jesucompany.ejerciciospringboot.presenter.service.PlanService;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,29 +21,52 @@ public class PlanRestController {
     }
 
     @GetMapping
-    public List<PlanDTO>getAllPlans() {
-        return planPresenter.getPlansForView();
+    public ResponseEntity<List<PlanDTO>> getAllPlans() {
+        List<PlanDTO> plans = planPresenter.getPlansForView();
+        if (plans.isEmpty()) {
+            return ResponseEntity.noContent().build(); // 204 No Content si no hay planes
+        }
+        return ResponseEntity.ok(plans); // 200 OK
     }
 
     @GetMapping("/{id}")
-    public PlanDTO getPlanById(@PathVariable("id") Long id) {
-        return planPresenter.getPlanById(id);
+    public ResponseEntity<PlanDTO> getPlanById(@PathVariable("id") Long id) {
+        try {
+            PlanDTO planDTO = planPresenter.getPlanById(id);
+            return ResponseEntity.ok(planDTO); // 200 OK
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // 404 Not Found
+        }
     }
 
     @PostMapping
-    public PlanDTO createPlan(@RequestBody Plan plan) {
-        return planPresenter.createPlan(plan.getName(),plan.getPrice(),
-                plan.getServicesProvided(),plan.isActive());
+    public ResponseEntity<PlanDTO> createPlan(@RequestBody Plan plan) {
+        try {
+            PlanDTO planDTO = planPresenter.createPlan(plan.getName(), plan.getPrice(),
+                    plan.getServicesProvided(), plan.isActive());
+            return ResponseEntity.status(HttpStatus.CREATED).body(planDTO); //201 Created
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build(); // 400 Bad Request
+        }
     }
 
     @PutMapping("/{id}")
-    public PlanDTO updatePlan(@PathVariable("id") Long id, @RequestBody Plan plan) {
-        return planPresenter.updatePlan(id, plan);
+    public ResponseEntity<PlanDTO> updatePlan(@PathVariable("id") Long id, @RequestBody Plan plan) {
+        try {
+            PlanDTO planDTO = planPresenter.updatePlan(id, plan);
+            return ResponseEntity.ok(planDTO); //200 OK
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); //404 Not Found
+        }
     }
 
     @DeleteMapping("/id")
-    public void deletePlan(@PathVariable("id") Long id) {
-        planPresenter.deletePlan(id);
+    public ResponseEntity<Void> deletePlan(@PathVariable("id") Long id) {
+        try {
+            planPresenter.deletePlan(id);
+            return ResponseEntity.noContent().build(); //204 No Content
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); //404 Not Found
+        }
     }
-
 }

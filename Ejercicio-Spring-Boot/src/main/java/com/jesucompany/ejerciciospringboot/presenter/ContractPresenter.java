@@ -1,9 +1,8 @@
 package com.jesucompany.ejerciciospringboot.presenter;
 
 import com.jesucompany.ejerciciospringboot.model.database.Contract;
-import com.jesucompany.ejerciciospringboot.model.database.Customer;
 import com.jesucompany.ejerciciospringboot.model.dto.ContractDTO;
-import com.jesucompany.ejerciciospringboot.presenter.service.ContractsService;
+import com.jesucompany.ejerciciospringboot.presenter.service.ContractsServiceImpl;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -11,9 +10,9 @@ import java.util.List;
 @Component
 public class ContractPresenter {
 
-    ContractsService contractsService;
+    ContractsServiceImpl contractsService;
 
-    public ContractPresenter(ContractsService contractsService) {
+    public ContractPresenter(ContractsServiceImpl contractsService) {
         this.contractsService = contractsService;
     }
 
