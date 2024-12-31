@@ -19,8 +19,8 @@
     <tbody>
     <tr th:each="contract : ${contracts}">
         <td th:text="${contract.id}"></td>
-        <td th:text="${contract.customerId}"></td>
-        <td th:text="${contract.planId}"></td>
+        <td th:text="${contract.getCustomer().getId()}"></td>
+        <td th:text="${contract.getPlan().getId()}"></td>
         <td th:text="${contract.startDate}"></td>
         <td th:text="${contract.endDate}"></td>
     </tr>

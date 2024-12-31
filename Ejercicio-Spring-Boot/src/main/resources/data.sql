@@ -19,3 +19,5 @@ insert into plans (name, price, services_provided, active) values ('promo winter
 insert into plans (name, price, services_provided, active) values ('promo summer', 25000, 'internet ilimitado, 1000 minutos', true);
 insert into plans (name, price, services_provided, active) values ('plan estudiante', 13990, 'internet ilimitado, 200 minutos', true);
 
+insert into contracts (customer_id, plan_id, start_date, end_date) values (1, 1, '2024-12-29', '2025-12-29');
+insert into contracts (customer_id, plan_id, start_date, end_date) values (3, 4, '2024-12-20', '2026-12-28');

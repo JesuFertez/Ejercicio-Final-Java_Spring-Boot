@@ -29,6 +29,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    // Dependencia de Hibernate
+    implementation 'org.hibernate.orm:hibernate-core:6.6.4.Final'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'

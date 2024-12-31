@@ -5,6 +5,7 @@ import com.jesucompany.ejerciciospringboot.model.dto.ContractDTO;
 import com.jesucompany.ejerciciospringboot.presenter.service.ContractsServiceImpl;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -20,8 +21,8 @@ public class ContractPresenter {
         return  contractsService.getAllContracts();
     }
 
-    public ContractDTO createContract(Contract contract, Long customerId, Long planId) {
-        return contractsService.createContract(contract, customerId, planId);
+    public ContractDTO createContract(Long customerId, Long planId, LocalDate startDate, LocalDate endDate) {
+        return contractsService.createContract(customerId, planId, startDate, endDate);
     }
 
     public ContractDTO updateContract(Long id, Contract contract){

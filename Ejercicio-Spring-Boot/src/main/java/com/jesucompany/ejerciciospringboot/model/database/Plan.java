@@ -31,4 +31,7 @@ public class Plan {
         this.servicesProvided = servicesProvided;
         this.active = active;
     }
+    public Plan(Long id) {
+        this.id = id;
+    }
 }

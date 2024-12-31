@@ -6,6 +6,7 @@ import com.jesucompany.ejerciciospringboot.presenter.ContractPresenter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -39,11 +40,12 @@ public class ContractRestController {
     }
 
     @PostMapping
-    public ResponseEntity<ContractDTO> createContract(@RequestBody Contract contract,
-                                                      @RequestParam Long customerId,
-                                                      @RequestParam Long planId) {
+    public ResponseEntity<ContractDTO> createContract(@RequestParam Long customerId,
+                                                      @RequestParam Long planId,
+                                                      @RequestParam LocalDate startDate,
+                                                      @RequestParam LocalDate endDate) {
         try {
-            ContractDTO contractDTO = contractPresenter.createContract(contract, customerId, planId);
+            ContractDTO contractDTO = contractPresenter.createContract(customerId, planId, startDate ,endDate);
             return ResponseEntity.ok(contractDTO);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();

@@ -53,4 +53,8 @@ public class Customer {
         this.isActive = isActive;
         this.contracts = contracts;
     }
+
+    public Customer(Long id) {
+        this.id = id;
+    }
 }

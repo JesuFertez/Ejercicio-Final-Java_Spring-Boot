@@ -13,8 +13,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ContractDTO {
     Long id;
-    Long customerId;
-    Long planId;
+    CustomerDTO customer;
+    PlanDTO plan;
     @JsonFormat(pattern = "dd/MM/yyyy")
     LocalDate startDate;
     @Future

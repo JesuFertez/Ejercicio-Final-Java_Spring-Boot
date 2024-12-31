@@ -3,7 +3,6 @@ package com.jesucompany.ejerciciospringboot.model.database;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,10 +19,10 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id_customer")
     private Customer customer;
     @ManyToOne
-    @JoinColumn(name = "plan_id")
+    @JoinColumn(name = "plan_id", referencedColumnName = "id_plans")
     private Plan plan;
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
@@ -33,7 +32,9 @@ public class Contract {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate endDate;
 
-    public Contract(LocalDate startDate, LocalDate endDate) {
+    public Contract(Customer customer, Plan plan, LocalDate startDate, LocalDate endDate) {
+        this.customer = customer;
+        this.plan = plan;
         this.startDate = startDate;
         this.endDate = endDate;
     }

@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class ContractsServiceImpl implements ContractServiceInterface{
     }
 
     @Override
-    public ContractDTO createContract(Contract contract, Long customerId, Long planId) {
+    public ContractDTO createContract(Long customerId, Long planId, LocalDate startDate, LocalDate endDate) {
         Customer customer = customerRepository.findById(customerId).orElse(null);
         if(!customer.getIsActive()){
             throw new IllegalStateException("El cliente está inactivo, no puede contratar planes");
@@ -49,10 +50,11 @@ public class ContractsServiceImpl implements ContractServiceInterface{
         Plan plan = plansRepository.findById(planId).orElseThrow(
                 ()-> new IllegalArgumentException("Plan no encontrado"));
 
+        Contract contract = new Contract();
         contract.setCustomer(customer);
         contract.setPlan(plan);
-        contract.setStartDate(contract.getStartDate());
-        contract.setEndDate(contract.getEndDate());
+        contract.setStartDate(startDate);
+        contract.setEndDate(endDate);
         contractsRepository.save(contract);
 
         ContractDTO contractDTO = modelMapper.map(contract, ContractDTO.class);

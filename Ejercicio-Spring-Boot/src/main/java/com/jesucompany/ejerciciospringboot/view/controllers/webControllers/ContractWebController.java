@@ -34,6 +34,7 @@ public class ContractWebController {
         model.addAttribute("contract", new Contract()); // Formulario vacío
         return "create-contract"; // Carga la plantilla crear-contrato.html
     }
+
     @PostMapping("/save")
     public String createContract(
             @RequestParam Long customerId,
@@ -41,13 +42,8 @@ public class ContractWebController {
             @RequestParam LocalDate startDate,
             @RequestParam LocalDate endDate,
             RedirectAttributes redirectAttributes) {
-        Contract contract = new Contract(startDate,endDate);
-        try {
-            contractPresenter.createContract(contract, planId, customerId);
+            contractPresenter.createContract(customerId, planId, startDate,endDate);
             redirectAttributes.addFlashAttribute("message", "Contrato creado exitosamente.");
-        } catch (IllegalStateException | IllegalArgumentException e) {
-            redirectAttributes.addFlashAttribute("error", e.getMessage());
-        }
         return "redirect:/web-contracts";
     }
 }

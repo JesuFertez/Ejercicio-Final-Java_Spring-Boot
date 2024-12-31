@@ -1,6 +1,8 @@
 package com.jesucompany.ejerciciospringboot.view.controllers.webControllers;
 
+import com.jesucompany.ejerciciospringboot.model.database.Contract;
 import com.jesucompany.ejerciciospringboot.model.database.Customer;
+import com.jesucompany.ejerciciospringboot.model.dto.ContractDTO;
 import com.jesucompany.ejerciciospringboot.model.dto.CustomerDTO;
 import com.jesucompany.ejerciciospringboot.presenter.CustomerPresenter;
 import org.springframework.stereotype.Controller;
@@ -50,5 +52,14 @@ public class CustomerWebController {
                     dateOfBirth,phone,isActive);
             redirectAttributes.addFlashAttribute("message","Cliente creado exitosamente");
         return "redirect:/web-customers";
+    }
+
+    @GetMapping("/{id}")
+    public String getCustomer(@PathVariable Long id, Model model){
+        CustomerDTO customerDTO = customerPresenter.getCustomerById(id);
+        List<ContractDTO> contractDTO = customerPresenter.getCustomerById(id).getContracts();
+        model.addAttribute("customerDTO", customerDTO);
+        model.addAttribute("contractDTO", contractDTO);
+        return "customer-details";
     }
 }
